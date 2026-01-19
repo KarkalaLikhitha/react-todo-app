@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./App.css";
 
@@ -12,13 +11,9 @@ function App() {
     setTask("");
   };
 
-  const deleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-  };
-
   return (
-    <div className="App">
-      <h1>Todo App</h1>
+    <div className="App" style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Todo Application</h1>
 
       <input
         type="text"
@@ -27,13 +22,22 @@ function App() {
         onChange={(e) => setTask(e.target.value)}
       />
 
-      <button onClick={addTask}>Add</button>
+      <br /><br />
 
-      <ul>
+      <button onClick={addTask}>Add Task</button>
+
+      <ul style={{ listStyle: "none", padding: 0 }}>
         {tasks.map((t, index) => (
           <li key={index}>
             {t}
-            <button onClick={() => deleteTask(index)}>❌</button>
+            <button
+              style={{ marginLeft: "10px" }}
+              onClick={() =>
+                setTasks(tasks.filter((_, i) => i !== index))
+              }
+            >
+              ❌
+            </button>
           </li>
         ))}
       </ul>
